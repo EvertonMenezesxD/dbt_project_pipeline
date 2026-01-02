@@ -12,5 +12,6 @@ __pycache__/
 venv/
 .env
 data/*
+Parametros.json
 # OS
 .DS_Store
