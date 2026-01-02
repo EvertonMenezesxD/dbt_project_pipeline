@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: sot_boston_311
+    description: "Fonte da Verdade para os chamados de Boston. PII mascarado."
+    columns:
+      - name: chamado_id
+        tests:
+          - unique
+          - not_null
+      - name: status_chamado
+        description: "Status do chamado formatado em maiúsculas"
+        tests:
+          - accepted_values:
+              values: ['OPEN', 'CLOSED']
+      - name: bairro
+        description: "Bairro onde o chamado foi registrado."
+        tests:
+          - not_null

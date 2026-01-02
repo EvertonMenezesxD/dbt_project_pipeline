@@ -1,0 +1,16 @@
+# dbt artifacts
+target/
+dbt_packages/
+logs/
+
+# DuckDB database (Não subir os dados!)
+*.db
+*.db.wal
+
+# Python
+__pycache__/
+venv/
+.env
+data/*
+# OS
+.DS_Store

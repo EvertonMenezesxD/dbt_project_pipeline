@@ -1,0 +1,30 @@
+name: 'boston_project'
+version: '1.0.0'
+config-version: 2
+
+# Certifique-se que o profile abaixo tem o MESMO nome que você usou no profiles.yml
+profile: 'boston_project'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  boston_project: # Nome do projeto definido na linha 1
+  # 2. Adicione a nova estrutura SOR, SOT, SPEC:
+    "01_sor":
+      +materialized: table # Ou view, conforme sua escolha
+      #+schema: sor         # Opcional: cria um schema separado no DuckDB
+    "02_sot":
+      +materialized: table
+      #+schema: sot
+    "03_spec":
+      +materialized: table
+      #+schema: spec

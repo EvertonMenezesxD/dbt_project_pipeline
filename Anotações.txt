@@ -1,0 +1,20 @@
+meu_projeto/
+├── data/                  <-- Onde ficam seus CSVs originais
+├── models/                <-- Onde a mágica acontece
+│   ├── sor/           <-- Camada 1: Limpeza básica (renomear colunas, tipos)
+│   ├── sot/      <-- Camada 2: Joins complexos e regras de negócio
+│   └── spec/             <-- Camada 3: Tabelas finais para o Dashboard
+├── dbt_project.yml        <-- O "RG" do projeto (nome, conexão)
+└── profiles.yml           <-- O "GPS" (onde está o arquivo .db do DuckDB)
+
+OU
+
+models/
+├── 01_sor/             <-- SYSTEM OF RECORD (Dado Bruto/Espelho)
+│   ├── _sor__fontes.yml
+│   └── sor_boston_311.sql
+├── 02_sot/             <-- SOURCE OF TRUTH (Dado Limpo e Contratual)
+│   ├── _sot__modelos.yml
+│   └── sot_boston_311.sql
+└── 03_spec/            <-- SPECIALIZED (Dados para Consumo)
+    └── spec_sla_por_bairro.sql

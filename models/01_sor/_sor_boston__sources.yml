@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: main  # Nome que você usa no {{ source('main', '...') }}
+    schema: main # Schema onde a tabela está no DBeaver
+    tables:
+      - name: raw_boston_311  # Nome da tabela no DBeaver

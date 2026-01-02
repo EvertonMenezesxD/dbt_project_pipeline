@@ -1,0 +1,6 @@
+boston_project:
+  outputs:
+    dev:
+      type: duckdb
+      path: 'D:\duckdb\boston_311\boston_data.db'
+  target: dev
