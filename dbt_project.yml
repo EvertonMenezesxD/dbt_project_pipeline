@@ -28,3 +28,5 @@ models:
     "03_spec":
       +materialized: table
       #+schema: spec
+    "04_audit":
+      +materialized: table
