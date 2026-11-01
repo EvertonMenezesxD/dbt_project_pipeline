@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: audit_sot_boston_311_reconciliation
+    description: >
+      Registra divergências de contagem de chaves entre a Golden Source e o modelo de
+      consumo configurados. Cada linha retornada representa uma divergência.
+    config:
+      meta:
+        reconciliation:
+          name: boston_311_source_to_sot
+          golden_source:
+            source_name: main
+            table_name: raw_boston_311
+          consumption_model: sot_boston_311
+          golden_key: case_enquiry_id
+          consumption_key: chamado_id
+    columns:
+      - name: reconciliation_name
+        description: Identificador do contrato de reconciliação.
+      - name: issue_type
+        description: Tipo de divergência encontrada.
+      - name: reconciliation_key
+        description: Chave comparada; nula quando a divergência é uma chave nula.
+      - name: golden_source_count
+        description: Quantidade de registros da chave na Golden Source.
+      - name: consumption_count
+        description: Quantidade de registros da chave no consumo.
+    tests:
+      - reconciliation_has_no_differences

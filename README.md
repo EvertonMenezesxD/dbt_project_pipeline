@@ -19,3 +19,22 @@ O projeto segue o conceito de camadas para garantir governança e qualidade:
 3. Execute as transformações:
    ```bash
    dbt run
+   ```
+
+## Desenvolvimento orientado a especificações (SDD)
+
+As especificações funcionais ficam em `specs/`. Cada feature deve definir
+objetivo, requisitos, critérios de aceitação e itens fora do escopo antes de
+expandir a implementação. A especificação inicial para reconciliação Golden
+Source x Consumo está em `specs/001-golden-source-reconciliation/spec.md`.
+
+A primeira entrega compara contagens por chave e grava somente divergências no
+modelo `audit_sot_boston_311_reconciliation`. O contrato é declarado no YAML do
+modelo de auditoria; o teste dbt associado falha se houver divergências.
+As linhas `depends_on` no SQL mantêm as referências à fonte e ao consumo no
+grafo de execução do dbt e devem acompanhar o contrato YAML.
+Execute o modelo, suas dependências e o teste com:
+
+```bash
+dbt build --select +audit_sot_boston_311_reconciliation
+```
